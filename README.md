@@ -107,6 +107,12 @@ To test our layout designs, you can
 use the Sandbox mode of the Mechanical Turk platform https://requestersandbox.mturk.com/, which is free of charge. You first need to create a new project where 
 you copy-paste the design layout, e.g., from *senbase_mturk_designlayout.html*. Afterwards, you need to upload a batch, e.g., *batch_participants.csv*.
 
+A screenshot of the SenBase interface is illustrated below:
+![SenBase Annotation Tool](annotation_interfaces/interface_senbase.JPG?raw=true "SenBase Annotation Interface")
+
+A screenshot of the SenSupport interface is illustrated below:
+![SenSupport Annotation Tool](annotation_interfaces/interface_sensupport.JPG?raw=true "SenSupport Annotation Interface")
+
 ## Contact Us
 If you have any further questions, open a new issue in this repository.
 

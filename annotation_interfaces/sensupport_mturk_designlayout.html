@@ -1,0 +1,595 @@
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Relevancy"><!-- Instructions  -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title"><a data-toggle="collapse" href="#collapseInstructions"><strong>Task Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a></h3>
+</div>
+
+<div class="panel-body ann collapse" id="collapseInstructions">${description}</div>
+</div>
+</div>
+</div>
+<!-- Study Report  -->
+
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title"><a data-toggle="collapse" href="#collapseStudyReport"><strong>Study Report</strong> <span class="collapse-text">(Click to expand)</span> </a></h3>
+</div>
+
+<div class="panel-body ann collapse" id="collapseStudyReport">${document}</div>
+</div>
+</div>
+</div>
+<!-- Sentence -->
+
+<div class="row" id="form">&nbsp;</div>
+<input class="form-control" disabled="disabled" id="${element}" name="${element}" type="hidden" value="" />
+<div id="raw">${sentence}</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title"><strong>Sentence</strong> <span style="font-size: 12px"> (Highlight information about <strong>${element}</strong> by clicking on a start and end word) </span></h3>
+</div>
+
+<div class="panel-body ann" id="well">&nbsp;</div>
+
+<ul class="list-group">
+	<li class="list-group-item">
+	<div class="form-check"><input class="form-check-input" id="no-${element}" name="noval" onchange="show()" type="checkbox" /> <label class="form-check-label" for="no-${element}">Sentence does not contain information about ${element}</label></div>
+	</li>
+</ul>
+</div>
+<!-- Examples -->
+
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title"><strong>Examples </strong><span style="font-size: 12px">(Caution: The shown examples might contain missing highlights.)</span></h3>
+</div>
+
+<ul class="list-group">
+	<li class="list-group-item" style="background-color:#f5f5f5">${example1}</li>
+	<li class="list-group-item" style="background-color:#f5f5f5">${example2}</li>
+	<li class="list-group-item" style="background-color:#f5f5f5">${example3}</li>
+	<li class="list-group-item">
+	<p>Which example was the most helpful to you?</p>
+
+	<div class="form-check form-check-inline"><input class="form-check-input" id="useful0" name="useful" onchange="show()" type="radio" value="none" /> <label class="form-check-label" for="useful0">None</label></div>
+
+	<div class="form-check form-check-inline"><input class="form-check-input" id="useful1" name="useful" onchange="show()" type="radio" value="${exid1}" /> <label class="form-check-label" for="useful1">Top Example</label></div>
+
+	<div class="form-check form-check-inline"><input class="form-check-input" id="useful2" name="useful" onchange="show()" type="radio" value="${exid2}" /> <label class="form-check-label" for="useful2">Middle Example</label></div>
+
+	<div class="form-check form-check-inline"><input class="form-check-input" id="useful3" name="useful" onchange="show()" type="radio" value="${exid3}" /> <label class="form-check-label" for="useful3">Bottom Example</label></div>
+	</li>
+</ul>
+</div>
+</div>
+</div>
+<span title="Highlight all fields before submitting"><input class="btn btn-default" data-key="Enter" disabled="disabled/" id="submit" type="submit" /></span></section>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<style type="text/css">/* My CSS */
+    .window {
+        border: 1px solid blue;
+    }
+
+    .top-buffer {
+        margin-top: 10px;
+    }
+
+    .participants {
+        font-weight: normal;
+        background-color: #EAD379;
+        /*color: red;*/
+    }
+
+    .interventions {
+        color: green;
+    }
+
+    .outcomes {
+        color: blue;
+    }
+
+    .studyheader {
+        font-weight: bold;
+    }
+
+    .form-check-inline {
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-left: 0;
+        margin-right: .75rem
+    }
+
+    .form-check-inline .form-check-input {
+        position: static;
+        margin-top: 0;
+        margin-right: .3125rem;
+        margin-left: 0
+    }
+
+    .helpheader {
+        font-weight: bold;
+        font-size: large;
+    }
+
+    /* Old CSS */
+    #submitButton {
+        white-space: normal;
+    }
+
+    #instructionBody table {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    #instructionBody table caption {
+        text-align: left;
+        padding: 0 0 5px 0;
+    }
+
+    #choice {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .content {
+        margin-bottom: 15px;
+    }
+
+    .question {
+        margin-left: 15px;
+        padding-left: 10px;
+        border-left: double;
+    }
+
+    .radio:first-of-type {
+        margin-top: -5px;
+    }
+
+    .ann {
+        font-size: 14px;
+    }
+
+    .disp {
+        font-size: 20px;
+    }
+
+    .ann > span.token {
+        cursor: pointer;
+    }
+
+    .ann > span.token:hover {
+        /*text-decoration: underline;*/
+        border-bottom: 1px solid;
+    }
+
+    .ann > strong.annotation:hover {
+        text-decoration: line-through;
+        cursor: pointer;
+    }
+
+    .annotation {
+        font-weight: normal;
+        background-color: #EAD379;
+    }
+
+    .btn-ann {
+        font-size: 10px;
+    }
+
+    input[disabled] {
+        color: #000
+    }
+
+    #key-name {
+        background-color: #EAD379;
+    }
+</style>
+<script>
+    // ---------------------------------------------------------
+    // Config
+    // ---------------------------------------------------------
+
+    var fieldName = {
+        "${element}": "pioelement",
+    }
+    var shortName = {
+        "${element}": "name",
+    }
+    var longDesc = {
+        "${element}": "Product name. Name of the software/device/library that is affected by this vulnerability ",
+    }
+    var shortcutKey = {
+        "${element}": "a",
+    }
+
+    // ---------------------------------------------------------
+    // Global
+    // ---------------------------------------------------------
+
+    var keys = Object.keys(fieldName);
+    var annotations = {};
+    var values = {};
+    var key;
+    var first_token = -1;
+    var second_token = -1;
+
+    // ---------------------------------------------------------
+    // Create jQuery elements
+    // ---------------------------------------------------------
+
+    var raw = $('#raw');
+    var well = $('#well');
+    var submit = $('#submit');
+    var choice = $('#choice');
+    var keyname = $('#key-name');
+    var instructionTable = $('#instruction-table');
+
+    var form = $("#form");
+    var answer = {};
+    var tagHidden = {};
+    var noVal = {};
+    var radios = {};
+    // answerHiddenDuplicates value of answer but is needed because
+    // otherwise the data is not sent
+    var answerHidden = {};
+
+    var makeInstruction = function (key) {
+        return ($(
+                '<tr>')
+                .append($('<td>').text(fieldName[key]))
+                .append($('<td>').text(longDesc[key]))
+        );
+    }
+
+    var makeChoice = function (key) {
+        var input = ($(
+                '<input>')
+                .attr({
+                    'name': 'choice', 'id': key + "-choice",
+                    'value': key, 'type': 'radio', 'data-key': shortcutKey[key]
+                })
+                .text(fieldName[key])
+        );
+        radios[key] = input;
+        var label = ($(
+                '<label>')
+                .addClass('btn btn-default')
+                .text(fieldName[key])
+                .append(input)
+                .attr({'title': "Shortcut: " + shortcutKey[key]})
+        );
+        return label;
+    }
+
+    var makeAnswerHidden = function (key) {
+        var input = ($(
+                '<input>')
+                .attr({'type': 'hidden', 'name': key, 'id': key + "-hidden"})
+        );
+        answerHidden[key] = input;
+        return input;
+    }
+
+    var makeTagHidden = function (key) {
+        var input = ($(
+                '<input>')
+                .attr({'type': 'hidden', 'name': key + "-tag", 'id': key + "-tag"})
+        );
+        tagHidden[key] = input;
+        return input;
+    }
+
+
+    var makeFormRow = function (key) {
+        // var checkbox = ($(
+        //         '<input>')
+        //         .attr({'type': 'checkbox', 'id': "no-" + key})
+        //         .addClass('form-check-input')
+        //         .change(function () {
+        //             show();
+        //         })
+        // );
+        // var label = ($(
+        //         '<label>')
+        //         .attr({'for': "no-" + key})
+        //         .addClass('form-check-label')
+        //         .text('Sentence does not contain information about ${element}')
+        // );
+        //
+        // var input = ($(
+        //         '<input>')
+        //         .attr({'type': 'hidden', 'disabled': 'disabled', 'id': key})
+        //         .addClass('form-control')
+        // );
+        //
+        // var div = ($(
+        //         '<div>')
+        //         .addClass('col-xs-12 col-sm-12')
+        //         // .append($('<label>')
+        //         //     .attr({'for': key})
+        //         //     .text(fieldName[key])
+        //         // )
+        //         .append($('<div>')
+        //             .addClass('form-row')
+        //             .append($('<div>')
+        //                 .addClass('col-sm-11')
+        //                 .append($('<div>')
+        //                     .addClass('form-check')
+        //                     .append(checkbox)
+        //                     .append(' ')
+        //                     .append(label)
+        //                 )
+        //             )
+        //             .append($('<div>')
+        //                 .addClass('col-sm-1')
+        //                 .append(input)
+        //             )
+        //         )
+        // );
+        answer[key] = $("#${element}");
+        noVal[key] = $("#no-${element}");
+        // return div;
+    }
+
+    var makeDom = function () {
+        for (var key of keys) {
+            // answer[key] = $('#pio');
+            // noVal[key] = $('#no-pio');
+            // form.append(makeTagHidden(key));
+            // form.append(makeAnswerHidden(key));
+            // choice.append(makeChoice(key));
+            // annotations[key] = [];
+            // values[key] = "";
+            form.append(makeFormRow(key));
+            form.append(makeTagHidden(key));
+            form.append(makeAnswerHidden(key));
+            choice.append(makeChoice(key));
+            annotations[key] = [];
+            values[key] = "";
+
+            //instructionTable.append(makeInstruction(key));
+        }
+    };
+
+    // ---------------------------------------------------------
+    // Annotation logic
+    // ---------------------------------------------------------
+
+    var old_annotations = [];
+
+
+    var get_annotation_id = function (token_id, annotations) {
+        var found = annotations.findIndex(function (annotation) { //findIndex returns index of array
+            return token_id >= annotation[0] && token_id < annotation[1];
+        });
+        return found;
+    };
+
+    var mouse_down = function (id) {
+        console.log("Mouse Down:", id);
+        var annotation_id = get_annotation_id(id, annotations[key]);
+        if (annotation_id > -1) {
+            delete_annotation(annotation_id);
+            show();
+        } else {
+            if (first_token > -1) {
+                second_token = id;
+            } else {
+                first_token = id;
+            }
+        }
+    };
+
+    var mouse_up = function (id) {
+        if (first_token > -1 && second_token > -1) {
+            if (first_token <= second_token) {
+                add_annotation([first_token, second_token + 1]);
+            } else {
+                add_annotation([second_token, first_token + 1]);
+            }
+            first_token = -1;
+            second_token = -1;
+            show();
+        }
+        // clear_selection();
+    };
+
+    var clear_selection = function () {
+        if (document.selection) {
+            document.selection.empty();
+        } else if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
+    };
+
+    var get_value = function () {
+        var values = _.map(annotations[key], function (annotation) {
+            return tokens.slice(annotation[0], annotation[1]).join(" ");
+        });
+        return values.join(" ");
+    };
+
+    var remove_all_annotations = function () {
+        old_annotations = annotations[key].slice();
+        annotations[key] = []
+    };
+
+    var delete_annotation = function (annotation_id) {
+        if (annotation_id > -1) {
+            old_annotations = annotations[key].slice();
+            annotations[key].splice(annotation_id, 1); //Removes index with annotation_id from array
+        }
+    };
+
+    var add_annotation = function (annotation) {
+        console.log("################################ add_annotation");
+        old_annotations = annotations[key].slice();
+        annotations[key].push(annotation);
+        console.log("annotation", annotation);
+        console.log("annotations", annotations[key]);
+    };
+
+    var toggle_old_new = function () {
+        var new_annotations = annotations[key].slice();
+        annotations[key] = old_annotations.slice();
+        old_annotations = new_annotations;
+    };
+
+
+    // ---------------------------------------------------------
+    // Displaying
+    // ---------------------------------------------------------
+
+    var sequence_html = function (sequence, annotations) {
+        var ret = _.map(sequence, function (token, index) {
+            return '<span class="token" id=tok_' + index + '> '
+                + token + ' </span>';
+        });
+        _.each(annotations, function (annotation) {
+            ret[annotation[0]] = '<strong class="annotation">'
+                + ret[annotation[0]];
+            ret[annotation[1] - 1] = ret[annotation[1] - 1] + '</strong>';
+        });
+
+        return ret.join(' ');
+    };
+
+
+    var canSubmit = function () {
+        console.log("###########################");
+        console.log("Can submit:");
+        console.log($('input[name=useful]:checked').length);
+        for (var key of keys) {
+            if (values[key] == "" && !noVal[key].is(":checked")) {
+                return false;
+            }
+            if ($('input[name=useful]:checked').length === 0) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    var show = function () {
+        console.log("################################ show");
+        annotations[key].sort(function (a, b) {
+            return a[0] - b[0];
+        });
+        // Merge Annotations right next to each other
+        console.log("Sorted:", annotations[key]);
+
+        var new_array = [];
+        for (var i = 0; i < annotations[key].length; i++) {
+            var start = annotations[key][i][0];
+            var end = annotations[key][i][1];
+            for (var n = start; n < end; n++) {
+                new_array.push(n);
+            }
+        }
+
+        var ranges = [], rstart, rend;
+        for (var i = 0; i < new_array.length; i++) {
+            rstart = new_array[i];
+            rend = rstart;
+            while (new_array[i + 1] - new_array[i] == 1) {
+                rend = new_array[i + 1]; // increment the index if the numbers sequential
+                i++;
+            }
+            ranges.push([rstart, rend + 1]);
+        }
+        annotations[key] = ranges;
+
+        //fill_annotated_values(datum);
+        seq_html = sequence_html(tokens, annotations[key]);
+        well.html(seq_html);
+        values[key] = get_value();
+        answer[key].val(values[key]);
+        answerHidden[key].val(values[key]);
+        tagHidden[key].val(annotations[key]);
+        console.log(key);
+        console.log(annotations[key]);
+        keyname.html(shortName[key]);
+
+
+        // Handler on tokens
+        $(".token").mousedown(function (event) {
+            if (event.which === 1) {
+                mouse_down(parseInt($(this).attr('id').split("_")[1]));
+            }
+        });
+        $(".token").mouseup(function (event) {
+            if (event.which === 1) {
+                mouse_up(parseInt($(this).attr('id').split("_")[1]));
+            }
+        });
+
+        if (canSubmit()) {
+            submit.removeAttr("disabled");
+            submit.removeClass("btn-default");
+            submit.addClass("btn-success");
+        } else {
+            submit.attr("disabled", "disabled");
+            submit.removeClass("btn-success");
+            submit.addClass("btn-default");
+        }
+    };
+
+
+    makeDom();
+
+    // ---------------------------------------------------------
+    // Event handlers
+    // ---------------------------------------------------------
+
+    $("#undo").click(function () {
+        toggle_old_new();
+        show();
+    });
+
+
+    $("#remove").click(function () {
+        remove_all_annotations();
+        show();
+    });
+
+    //highlight selected category
+    var inputs = $("#choice input:radio");
+    inputs.change(function () {
+        inputs.parent().removeClass("btn-success");
+        inputs.parent().addClass("btn-default");
+        if ($(this).is(":checked")) {
+            key = $(this).val();
+            $(this).parent().removeClass("btn-default");
+            $(this).parent().addClass("btn-success");
+            show();
+        } else {
+            $(this).parent().removeClass("btn-success");
+            $(this).parent().addClass("btn-default");
+        }
+    });
+
+    // ---------------------------------------------------------
+    // Initialize
+    // ---------------------------------------------------------
+
+    key = keys[0];
+    radios[key].click();
+    var tokens = raw.text().split(">>");
+    raw.hide();
+    show();
+
+
+</script>

@@ -266,73 +266,18 @@
 
 
     var makeFormRow = function (key) {
-        // var checkbox = ($(
-        //         '<input>')
-        //         .attr({'type': 'checkbox', 'id': "no-" + key})
-        //         .addClass('form-check-input')
-        //         .change(function () {
-        //             show();
-        //         })
-        // );
-        // var label = ($(
-        //         '<label>')
-        //         .attr({'for': "no-" + key})
-        //         .addClass('form-check-label')
-        //         .text('Sentence does not contain information about ${element}')
-        // );
-        //
-        // var input = ($(
-        //         '<input>')
-        //         .attr({'type': 'hidden', 'disabled': 'disabled', 'id': key})
-        //         .addClass('form-control')
-        // );
-        //
-        // var div = ($(
-        //         '<div>')
-        //         .addClass('col-xs-12 col-sm-12')
-        //         // .append($('<label>')
-        //         //     .attr({'for': key})
-        //         //     .text(fieldName[key])
-        //         // )
-        //         .append($('<div>')
-        //             .addClass('form-row')
-        //             .append($('<div>')
-        //                 .addClass('col-sm-11')
-        //                 .append($('<div>')
-        //                     .addClass('form-check')
-        //                     .append(checkbox)
-        //                     .append(' ')
-        //                     .append(label)
-        //                 )
-        //             )
-        //             .append($('<div>')
-        //                 .addClass('col-sm-1')
-        //                 .append(input)
-        //             )
-        //         )
-        // );
         answer[key] = $("#${element}");
         noVal[key] = $("#no-${element}");
-        // return div;
     }
 
     var makeDom = function () {
         for (var key of keys) {
-            // answer[key] = $('#pio');
-            // noVal[key] = $('#no-pio');
-            // form.append(makeTagHidden(key));
-            // form.append(makeAnswerHidden(key));
-            // choice.append(makeChoice(key));
-            // annotations[key] = [];
-            // values[key] = "";
             form.append(makeFormRow(key));
             form.append(makeTagHidden(key));
             form.append(makeAnswerHidden(key));
             choice.append(makeChoice(key));
             annotations[key] = [];
             values[key] = "";
-
-            //instructionTable.append(makeInstruction(key));
         }
     };
 

@@ -1,7 +1,7 @@
 # Annotation of Participants, Interventions, and Outcomes
 This repository contains the code and the annotation interfaces for our experiments on data annotation of Participants, Interventions, and Outcomes (referred to as PICO task). 
 
-## Dataset
+## Annotated Datasets
 For 423 sentences, following sets of annotations are available:
 
 Name | Description | #Redundant annotations per Sentence | #Workers
